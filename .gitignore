@@ -1,6 +1,6 @@
 debug.txt
 map.db/*
-worlds/Tutorial
+worlds/
 .DS_Store
 w2mt/projects
 w2mt/world2minetest/map.dat
@@ -10,3 +10,4 @@ worlds/mods/world2minetest/map.dat
 players.sqlite
 auth.sqlite
 env_meta.txt
+*.json
