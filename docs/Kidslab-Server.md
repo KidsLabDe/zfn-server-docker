@@ -56,7 +56,7 @@ Die World.MT Datei ist die config-Datei für die jeweilige Welt. Diese zum Beisp
 
 
 
-![world.mt](/Users/kingbbq/Downloads/world.mt.png)
+![world.mt](world.mt.png)
 
 Andere wichtige Optionen:
 
@@ -104,7 +104,7 @@ Das Passwort hier ändern:
 
 
 
-![minetest-pw](/Users/kingbbq/Downloads/minetest-pw.png)
+![minetest-pw](minetest-pw.png)
 
 ```
 /opt/minetest/ZFN$ docker compose -f 05.yaml start
