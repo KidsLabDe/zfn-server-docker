@@ -9,5 +9,5 @@ cp main-config/workshop.conf main-config/minetest.conf
 rm mods/world2minetest/map.dat
 cp worlds/$WORLDNAME*/world2minetest/map.dat mods/world2minetest/
 #docker-compose -f workshop-old.yaml sto
-rm debug.txt
-docker-compose -f workshop-old.yaml up
+#rm debug.txt
+docker-compose -f workshop.yaml up

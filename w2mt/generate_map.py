@@ -26,6 +26,7 @@ WATERWAY_WIDTHS = {
     "drain": 1,
     "ditch": 1,
     "stream": 2,
+    "river": 3,
 }
 
 
