@@ -11,7 +11,8 @@ services:
       - TZ=Europe/Berlin
       - CLI_ARGS=" --worldname 08 --world worlds --port 30108 --logfile /config/.minetest/logs/08.log
     volumes:
-      - ./:/config/.minetest
+      - .:/config/.minetest
+      - ./config-08/minetest.conf:/config/.minetest/main-config/minetest.conf
     ports:
       - 30108:30108/udp
     restart: unless-stopped
