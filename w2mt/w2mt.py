@@ -34,14 +34,6 @@ player_backend = sqlite3
 backend = {}
 gameid = {}
 world_name = {}
-enable_damage = false
-creative_mode = true
-mod_storage_backend = sqlite3
-auth_backend = sqlite3
-player_backend = sqlite3
-backend = leveldb
-gameid = antigrief
-world_name = 01
 server_announce = false
 load_mod_worldedit = true
 load_mod_steampunk_blimp = false
@@ -403,7 +395,7 @@ def copy_mod_in_project_dir():
 
 def define_world_for_project():
 	# define world for this project:
-	world_mt_string = world_mt_template.format(args.backend, args.gameid, args.worldname)
+	world_mt_string = world_mt_template.format(args.backend, args.gameid, args.worldname[0:2])
 	# Write the file:
 	world_file = os.path.join(project_path, "world.mt").replace("\"", "")
 	with open(world_file, 'w') as file:
