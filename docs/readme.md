@@ -1,5 +1,3 @@
-
-
 # Minetest - Zukunftsworkshop
 
 ## Packliste
@@ -76,6 +74,15 @@ max_simultaneous_block_sends_per_client = 160
 Test mit 40 gleichzeitigen Clients erfolgreich:
 
 <img width="882" alt="AP1 - Interface WLANUplink at admin@192 168 88 1 - Webfig v6 47 10 (long-term) on hAP ac^3 (arm) 2022-11-30 15-26-49" src="https://user-images.githubusercontent.com/4609107/204824733-5b0018bf-634c-435a-a97f-b025fe96f29c.png">
+
+## Router Setup
+
+Diese einstellungen haben sich als gut funktionierend erwiesen für 30-50 clients. 
+
+![](router_5_setup.png)
+
+![](router_24_setup.png)
+
 
 ## Tipps und Tricks
 
@@ -155,3 +162,4 @@ Für lokale Single Player Version:
 - Zugangsdaten Server
   - Hochladen der Welt direkt
 - QR Code für WhatsApp Gruppe oder Insta?
+
