@@ -1,32 +1,45 @@
 # Minetest Game
 
-The default game bundled in the Minetest engine.
+[![ContentDB](https://content.luanti.org/packages/Minetest/minetest_game/shields/title/)](https://content.luanti.org/packages/Minetest/minetest_game/)
 
-For further information, check [this forum topic](https://forum.minetest.net/viewtopic.php?f=15&t=9724).
+Minetest Game (abbreviated MTG) is a simple and peaceful sandbox game, with no
+real goals or built-in enemy mobs.
 
-Also see the [Minetest Wiki](https://wiki.minetest.net/Subgames/Minetest_Game) for more information.
+While it provides a basic gameplay experience out of the box, it is best played
+with mods.
+
+Minetest Game is in perpetual maintenance-only mode, meaning it will not see new
+gameplay features or anything else that breaks compatibility (see
+[#2710](https://github.com/minetest/minetest_game/issues/2710)).
 
 ## Installation
 
+### ContentDB
+
+* Content > Browse Online Content
+* Search for "[Minetest Game](https://content.luanti.org/packages/Minetest/minetest_game/)"
+* Click Install
+
+### Manually
+
 - Unzip the archive, rename the folder to `minetest_game` and
-place it in .. `minetest/games/`
+place it in `.../minetest/games/`
 
 - GNU/Linux: If you use a system-wide installation place it in `~/.minetest/games/`.
 
-The Minetest engine can be found at [GitHub](https://github.com/minetest/minetest).
+The Luanti engine can be found at [GitHub](https://github.com/minetest/minetest).
 
-For further information or help, see: [Installing Mods](https://wiki.minetest.net/Installing_Mods).
+For further information or help, see: [Installing Mods](https://wiki.luanti.org/Installing_Mods).
 
 ## Compatibility
 
-The Minetest Game GitHub `master` `HEAD` is generally compatible with the GitHub
-`master` `HEAD` of the Minetest engine.
+As of January 2024 Minetest Game follows a **rolling release** model with new changes being automatically
+published on ContentDB every day.
 
-Additionally, when the Minetest engine is tagged to be a certain version (e.g.
-`0.4.10`), Minetest Game is tagged with the version, too.
+There are no stable releases or tags, all existing ones are considered legacy.
 
-When stable releases are made, Minetest Game and the Minetest engine is packaged 
-and made available at [www.minetest.net](https://www.minetest.net/downloads/).
+Minetest Game is always compatible to the latest stable release of the engine.
+Older releases may be supported too depending on circumstances.
 
 ## Licensing
 

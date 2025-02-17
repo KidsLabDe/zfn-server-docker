@@ -97,7 +97,7 @@ local function lay_down(player, pos, bed_pos, state, skip)
 		end
 
 		-- Check if player is moving
-		if vector.length(player:get_velocity()) > 0.001 then
+		if vector.length(player:get_velocity()) > 0.05 then
 			minetest.chat_send_player(name, S("You have to stop moving before going to bed!"))
 			return false
 		end
@@ -181,6 +181,26 @@ function beds.skip_night()
 	minetest.set_timeofday(0.23)
 end
 
+local update_scheduled = false
+local function schedule_update()
+	if update_scheduled then
+		-- there already is an update scheduled; don't schedule more to prevent races
+		return
+	end
+	update_scheduled = true
+	minetest.after(2, function()
+		update_scheduled = false
+		if not is_sp then
+			update_formspecs(is_night_skip_enabled())
+		end
+		if is_night_skip_enabled() then
+			-- skip the night and let all players stand up
+			beds.skip_night()
+			beds.kick_players()
+		end
+	end)
+end
+
 function beds.on_rightclick(pos, player)
 	local name = player:get_player_name()
 	local ppos = player:get_pos()
@@ -206,17 +226,8 @@ function beds.on_rightclick(pos, player)
 		update_formspecs(false)
 	end
 
-	-- skip the night and let all players stand up
 	if check_in_beds() then
-		minetest.after(2, function()
-			if not is_sp then
-				update_formspecs(is_night_skip_enabled())
-			end
-			if is_night_skip_enabled() then
-				beds.skip_night()
-				beds.kick_players()
-			end
-		end)
+		schedule_update()
 	end
 end
 
@@ -233,10 +244,9 @@ end
 -- Callbacks
 -- Only register respawn callback if respawn enabled
 if enable_respawn then
-	-- respawn player at bed if enabled and valid position is found
-	minetest.register_on_respawnplayer(function(player)
-		local name = player:get_player_name()
-		local pos = beds.spawn[name]
+	-- Respawn player at bed if valid position is found
+	spawn.register_on_spawn(function(player, is_new)
+		local pos = beds.spawn[player:get_player_name()]
 		if pos then
 			player:set_pos(pos)
 			return true
@@ -249,13 +259,7 @@ minetest.register_on_leaveplayer(function(player)
 	lay_down(player, nil, nil, false, true)
 	beds.player[name] = nil
 	if check_in_beds() then
-		minetest.after(2, function()
-			update_formspecs(is_night_skip_enabled())
-			if is_night_skip_enabled() then
-				beds.skip_night()
-				beds.kick_players()
-			end
-		end)
+		schedule_update()
 	end
 end)
 

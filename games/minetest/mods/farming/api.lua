@@ -178,13 +178,21 @@ farming.place_seed = function(itemstack, placer, pointed_thing, plantname)
 	end
 
 	-- add the node and remove 1 item from the itemstack
-	default.log_player_action(placer, "places node", plantname, "at", pt.above)
+	if placer then
+		default.log_player_action(placer, "places node", plantname, "at", pt.above)
+	end
 	minetest.add_node(pt.above, {name = plantname, param2 = 1})
 	tick(pt.above)
 	if not minetest.is_creative_enabled(player_name) then
 		itemstack:take_item()
 	end
 	return itemstack
+end
+
+-- check if on wet soil
+farming.can_grow = function(pos)
+	local below = minetest.get_node(pos:offset(0, -1, 0))
+	return minetest.get_item_group(below.name, "soil") >= 3
 end
 
 farming.grow_plant = function(pos, elapsed)
@@ -222,9 +230,7 @@ farming.grow_plant = function(pos, elapsed)
 		return
 	end
 
-	-- check if on wet soil
-	local below = minetest.get_node({x = pos.x, y = pos.y - 1, z = pos.z})
-	if minetest.get_item_group(below.name, "soil") < 3 then
+	if not (def.can_grow or farming.can_grow)(pos) then
 		tick_again(pos)
 		return
 	end

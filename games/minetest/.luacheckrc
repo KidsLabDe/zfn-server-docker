@@ -1,8 +1,13 @@
 unused_args = false
 allow_defined_top = true
 
+globals = {
+	"default"
+}
+
 read_globals = {
 	"DIR_DELIM",
+	"core",
 	"minetest",
 	"dump",
 	"vector",
