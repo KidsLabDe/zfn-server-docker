@@ -1,0 +1,3 @@
+# Logs dir
+
+hier liegen die Logs der einzelnen welten...
