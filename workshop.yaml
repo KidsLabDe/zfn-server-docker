@@ -1,5 +1,4 @@
 ---
-version: "2.1"
 services:
   minetest:
     image: ghcr.io/linuxserver/luanti:latest
